@@ -104,6 +104,13 @@ include::aerospace-macos-native-minimize.adoc[tags=synopsis]
 include::aerospace-macos-native-minimize.adoc[tags=purpose]
 include::aerospace-macos-native-minimize.adoc[tags=body]
 
+== primary-secondary
+----
+include::aerospace-primary-secondary.adoc[tags=synopsis]
+----
+include::aerospace-primary-secondary.adoc[tags=purpose]
+include::aerospace-primary-secondary.adoc[tags=body]
+
 == mode
 ----
 include::aerospace-mode.adoc[tags=synopsis]

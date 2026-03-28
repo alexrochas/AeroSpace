@@ -98,6 +98,7 @@ extension Window {
 extension TilingContainer {
     @MainActor
     fileprivate func layoutTiles(_ point: CGPoint, width: CGFloat, height: CGFloat, virtual: Rect, _ context: LayoutContext) async throws {
+        applyPrimarySecondarySizingIfNeeded(availableWidth: width, availableHeight: height)
         var point = point
         var virtualPoint = virtual.topLeftCorner
 

@@ -1,0 +1,47 @@
+= aerospace-primary-secondary(1)
+include::util/man-attributes.adoc[]
+:manname: aerospace-primary-secondary
+// tag::purpose[]
+:manpurpose: Arrange the workspace into a 70/30 primary-secondary layout and promote the target window to the primary pane
+// end::purpose[]
+
+// =========================================================== Synopsis
+== Synopsis
+[verse]
+// tag::synopsis[]
+aerospace primary-secondary [-h|--help] [--window-id <window-id>]
+
+// end::synopsis[]
+
+// =========================================================== Description
+== Description
+
+// tag::body[]
+{manpurpose}
+
+The primary pane takes about 70% of the workspace width on the left.
+All remaining tiling windows are placed into a vertical secondary column on the right.
+
+Running the command again on another tiling window promotes that window into the primary pane.
+
+// =========================================================== Options
+include::./util/conditional-options-header.adoc[]
+
+-h, --help:: Print help
+
+--window-id <window-id>::
+include::./util/window-id-flag-desc.adoc[]
+
+// =========================================================== Examples
+include::util/conditional-examples-header.adoc[]
+
+* Turn the focused workspace into a primary-secondary layout: +
+`aerospace primary-secondary`
+
+* Promote another window to the primary pane: +
+`aerospace focus right; aerospace primary-secondary`
+
+// end::body[]
+
+// =========================================================== Footer
+include::util/man-footer.adoc[]

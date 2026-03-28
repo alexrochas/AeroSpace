@@ -225,6 +225,9 @@ private func unbindAndGetBindingDataForNewWindow(_ windowId: UInt32, _ macApp: M
 @MainActor
 private func unbindAndGetBindingDataForNewTilingWindow(_ workspace: Workspace, window: Window?) -> BindingData {
     window?.unbindFromParent() // It's important to unbind to get correct data from below
+    if let primarySecondaryBinding = workspace.rootTilingContainer.bindingDataForNewPrimarySecondaryWindow(on: workspace) {
+        return primarySecondaryBinding
+    }
     let mruWindow = workspace.mostRecentWindowRecursive
     if let mruWindow, let tilingParent = mruWindow.parent as? TilingContainer {
         return BindingData(

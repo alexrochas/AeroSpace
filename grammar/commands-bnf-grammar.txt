@@ -43,6 +43,8 @@ aerospace -h;
 
     | macos-native-minimize [--window-id <window_id>]
 
+    | primary-secondary [--window-id <window_id>]
+
     | mode <mode_id>
 
     | move [<move_command_flag>]... (left|down|up|right) [<move_command_flag>]...
