@@ -96,9 +96,6 @@ let macos_native_fullscreen_help_generated = """
 let macos_native_minimize_help_generated = """
     USAGE: macos-native-minimize [-h|--help] [--window-id <window-id>]
     """
-let primary_secondary_help_generated = """
-    USAGE: primary-secondary [-h|--help] [--window-id <window-id>]
-    """
 let mode_help_generated = """
     USAGE: mode [-h|--help] <binding-mode>
     """
@@ -125,6 +122,9 @@ let move_workspace_to_monitor_help_generated = """
     """
 let move_help_generated = """
     USAGE: move [-h|--help] [--window-id <window-id>] [--boundaries <boundary>] [--boundaries-action <boundary-action>] (left|down|up|right)
+    """
+let primary_secondary_help_generated = """
+    USAGE: primary-secondary [-h|--help] [--window-id <window-id>]
     """
 let reload_config_help_generated = """
     USAGE: reload-config [-h|--help] [--no-gui] [--dry-run]
