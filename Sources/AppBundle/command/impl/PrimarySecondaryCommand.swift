@@ -3,15 +3,16 @@ import Common
 
 struct PrimarySecondaryCommand: Command {
     let args: PrimarySecondaryCmdArgs
-    /*conforms*/ var shouldResetClosedWindowsCache = true
+    /*conforms*/ let shouldResetClosedWindowsCache = true
 
-    func run(_ env: CmdEnv, _ io: CmdIo) -> Bool {
-        guard let target = args.resolveTargetOrReportError(env, io) else { return false }
+    @MainActor
+    func run(_ env: CmdEnv, _ io: CmdIo) async throws -> BinaryExitCode {
+        guard let target = args.resolveTargetOrReportError(env, io) else { return .fail }
         guard let primaryWindow = target.windowOrNil else {
-            return io.err(noWindowIsFocused)
+            return .fail(io.err(noWindowIsFocused))
         }
         guard primaryWindow.parent is TilingContainer else {
-            return io.err("The window is non-tiling")
+            return .fail(io.err("The window is non-tiling"))
         }
 
         let workspace = target.workspace
@@ -31,12 +32,12 @@ struct PrimarySecondaryCommand: Command {
                 availableHeight: workspace.workspaceMonitor.visibleRectPaddedByOuterGaps.height - 1,
             )
             focus.windowOrNil?.markAsMostRecentChild()
-            return true
+            return .succ
         }
 
         let tilingWindows = root.allLeafWindowsRecursive
         guard tilingWindows.contains(primaryWindow) else {
-            return io.err("The window is non-tiling")
+            return .fail(io.err("The window is non-tiling"))
         }
 
         let orderedWindows = [primaryWindow] + tilingWindows.filter { $0 != primaryWindow }
@@ -66,7 +67,7 @@ struct PrimarySecondaryCommand: Command {
             availableHeight: workspace.workspaceMonitor.visibleRectPaddedByOuterGaps.height - 1,
         )
         focus.windowOrNil?.markAsMostRecentChild()
-        return true
+        return .succ
     }
 }
 

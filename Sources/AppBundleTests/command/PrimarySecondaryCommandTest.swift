@@ -21,7 +21,7 @@ final class PrimarySecondaryCommandTest: XCTestCase {
             TestWindow.new(id: 4, parent: $0)
         }
 
-        assertEquals(try await PrimarySecondaryCommand(args: PrimarySecondaryCmdArgs(rawArgs: [])).run(.defaultEnv, .emptyStdin).exitCode, 0)
+        assertEquals(try await PrimarySecondaryCommand(args: PrimarySecondaryCmdArgs(rawArgs: [])).run(.defaultEnv, .emptyStdin).exitCode.rawValue, 0)
 
         assertEquals(
             workspace.rootTilingContainer.layoutDescription,
@@ -56,12 +56,12 @@ final class PrimarySecondaryCommandTest: XCTestCase {
             TestWindow.new(id: 4, parent: $0)
         }
 
-        assertEquals(try await PrimarySecondaryCommand(args: PrimarySecondaryCmdArgs(rawArgs: [])).run(.defaultEnv, .emptyStdin).exitCode, 0)
+        assertEquals(try await PrimarySecondaryCommand(args: PrimarySecondaryCmdArgs(rawArgs: [])).run(.defaultEnv, .emptyStdin).exitCode.rawValue, 0)
 
         let stack = workspace.rootTilingContainer.children[1] as! TilingContainer
         assertEquals((stack.children[1] as! Window).focusWindow(), true)
 
-        assertEquals(try await PrimarySecondaryCommand(args: PrimarySecondaryCmdArgs(rawArgs: [])).run(.defaultEnv, .emptyStdin).exitCode, 0)
+        assertEquals(try await PrimarySecondaryCommand(args: PrimarySecondaryCmdArgs(rawArgs: [])).run(.defaultEnv, .emptyStdin).exitCode.rawValue, 0)
 
         assertEquals(
             workspace.rootTilingContainer.layoutDescription,
